@@ -45,3 +45,17 @@
 .header-blue {
   background-color: blueviolet;
 }
+
+.counter-button {
+  display: block;
+  padding: 5px;
+}
+
+.counter {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  min-width: 200px;
+  text-align: center;
+}
