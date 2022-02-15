@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-const name='Roman'
+import { ThemeProvider } from '@emotion/react';
+import theme from './theme/theme';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App myName={name} topPosition={'100px'} />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

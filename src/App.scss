@@ -59,3 +59,32 @@
   min-width: 200px;
   text-align: center;
 }
+
+.messageBox {
+  display: flex;
+  width: 300px;
+  padding: 10px;
+}
+
+.author {
+  font-size: 8px;
+}
+
+.messenger {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 500px;
+  min-width: 300px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+}
+
+.controlPlace {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+  align-items: center;
+}
