@@ -24,6 +24,12 @@ function App() {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleButton();
+    }
+  }
+
   useEffect(() => {
     let timer;
     if (messageList.length > 0 && messageList[messageList.length - 1]?.author === AUTHORS.me) {
@@ -61,6 +67,7 @@ function App() {
           <Fab
             color='primary'
             onClick={handleButton}
+            onKeyDown={handleKeyDown}
             style={{
               borderColor: theme.palette.secondary
             }}
