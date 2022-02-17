@@ -88,3 +88,22 @@
   max-width: 300px;
   align-items: center;
 }
+
+.workplace {
+  display: flex;
+  width: 600px;
+}
+
+.chatList {
+  width: 250px;
+}
+
+
+.link {
+  color: white;
+}
+
+.horizontalMenu {
+  display: flex;
+  justify-content: space-between;
+}
