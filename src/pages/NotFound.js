@@ -1,10 +1,10 @@
 import ChatList from '../components/ChatList';
 
-const NotFound = (props) => {
+const NotFound = () => {
 
   return (
     <div>
-      <ChatList chats={props.chats} />
+      <ChatList />
       <div>Not Found</div>
     </div>
   );

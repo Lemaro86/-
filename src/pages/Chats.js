@@ -5,24 +5,17 @@ import NotFound from './NotFound';
 import ChatList from '../components/ChatList';
 import ControlPanel from '../components/ControlPanel';
 
-const Chats = (props) => {
-  const { chats, setChats } = props;
-  const { chatId } = useParams();
-
-  if (!chats[chatId]) {
-    return <NotFound />;
-  }
-
+const Chats = () => {
   return (
     <div className='workplace'>
       <div className='chatList'>
-        <ChatList chats={chats} />
+        <ChatList />
       </div>
 
       <div className='chatItem'>
         <Paper elevation={1}>
-          <MessageList messages={chats[chatId].messages} />
-          <ControlPanel chats={chats} setChats={setChats} />
+          <MessageList />
+          <ControlPanel />
         </Paper>
       </div>
     </div>

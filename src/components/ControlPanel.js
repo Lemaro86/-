@@ -1,15 +1,19 @@
 import { Fab, TextField, useTheme } from '@mui/material';
 import { Send } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
-import { AUTHORS } from '../constants/common';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMessage } from '../store/messages/actions';
+import { AUTHORS } from '../constants/common';
 
-const ControlPanel = (props) => {
-  const { chats, setChats } = props;
+const ControlPanel = () => {
   const [value, setValue] = useState('');
   const theme = useTheme();
   const { chatId } = useParams();
-
+  const { name } = useSelector(state => state.profile);
+  const allMessages = useSelector(state => state.messages.messageList);
+  const dispatch = useDispatch()
+  const messages = allMessages?.[chatId];
 
   const handleInput = (event) => {
     setValue(event.target.value);
@@ -17,17 +21,11 @@ const ControlPanel = (props) => {
 
   const handleButton = () => {
     if (value !== '') {
-      const newObject = {
-        ...chats,
-        [chatId]: {
-          name: chats[chatId].name,
-          messages: [...chats[chatId].messages, {
-            text: value,
-            author: AUTHORS.me
-          }]
-        }
+      const message = {
+        text: value,
+        author: name
       }
-      setChats(newObject)
+      dispatch(addMessage(chatId, message))
       setValue('');
     }
   };
@@ -38,22 +36,22 @@ const ControlPanel = (props) => {
     }
   };
 
-  // useEffect(() => {
-  //   let timer;
-  //   if (messageList.length > 0 && messageList[messageList.length - 1]?.author === AUTHORS.me) {
-  //     timer = setInterval(() => setMessageList([
-  //       ...messageList,
-  //       {
-  //         text: 'Привет, это сообщение от бота',
-  //         author: AUTHORS.bot
-  //       }
-  //     ]), 1500);
-  //   }
-  //
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [messageList]);
+  useEffect(() => {
+    let timer;
+    if (messages?.length > 0 && messages[messages.length - 1]?.author === name) {
+      timer = setInterval(() => {
+        const message = {
+          text: 'Привет, это сообщение от бота',
+          author: AUTHORS.bot
+        }
+        dispatch(addMessage(chatId, message))
+      }, 3000);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [dispatch, name, chatId, messages]);
 
   return (
     <div className={'controlPlace'}>
@@ -78,7 +76,7 @@ const ControlPanel = (props) => {
         <Send />
       </Fab>
     </div>
-  )
-}
+  );
+};
 
-export default ControlPanel
+export default ControlPanel;
