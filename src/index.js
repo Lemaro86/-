@@ -5,14 +5,16 @@ import App from './App';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme/theme';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
