@@ -13,8 +13,8 @@ const MessageList = () => {
   return (
     <div className='messenger'>
       <List sx={{ width: '100%', maxWidth: 350, bgcolor: 'background.paper' }}>
-        {messages?.map((item) => (
-          <ListItem key={item.id}>
+        {messages?.map((item, index) => (
+          <ListItem key={index}>
             <ListItemAvatar>
               <Avatar>{item.author !== AUTHORS.bot ? <AccountCircle /> : <Android />}</Avatar>
             </ListItemAvatar>
