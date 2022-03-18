@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { changeName, exampleAction } from '../store/profile/actions';
-import { Checkbox, Fab, FormControlLabel, FormGroup, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, FormGroup, TextField } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { Send } from '@mui/icons-material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -27,28 +26,39 @@ const Profile = () => {
   return (
     <div>
       <ToastContainer />
-      <h1> Profile </h1>
+      <h1>Профиль</h1>
+      <span>Введите свои имя для использования его в чатах </span>
+      <br />
+      <br />
+      <br />
       <FormGroup>
         <FormControlLabel
           control={
             <Checkbox checked={showName} onChange={toggleShowName} />
           }
-          label='Toggle Name'
+          label='Показать/Скрыть форму для ввода имени'
         />
       </FormGroup>
+      <br />
+      <br />
+      <br />
 
-      {showName && <div>
+      {showName && <div style={{ display: 'flex' }}>
         <TextField
           value={value}
           onChange={handleInput}
+          placeholder={'Введите ваше имя'}
         />
 
-        <Fab
+        <div style={{ width: 20 }} />
+
+        <Button
+          size='large'
           color='primary'
           onClick={handleButton}
         >
-          <Send />
-        </Fab>
+          Сохранить
+        </Button>
       </div>}
     </div>
   );

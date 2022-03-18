@@ -21,35 +21,42 @@ const ChatList = () => {
     dispatch(addChat(chatName));
     setChatName('');
     setVisible(false);
-  }
+  };
 
   const removeChat = (index) => {
     dispatch(deleteChat(index));
-  }
+  };
 
   return (
-    <>
-      <List>
-        {chats?.map((chat, index) => (
-          <ListItem key={index}>
-            <Link to={`/chats/${chat.id}`}>
-              <b style={{ color: chat.id === chatId ? '#000000' : 'grey' }}>
-                {chat.name}
-              </b>
-              <button onClick={() => removeChat(index)}><Delete /></button>
-            </Link>
-          </ListItem>
-        ))}
-      </List>
-      <button onClick={handleOpen}>Add Chat</button>
+    <div className='chatListNice'>
+      <label style={{ background: 'rgb(61 58 58)', display: 'block', padding: '10px' }}>Чаты:</label>
+      <div className='chatAndAdd'>
+        <List>
+          {chats?.length > 0 ? chats?.map((chat, index) => (
+            <ListItem key={index} style={{ borderBottom: '1px solid #ccc' }}>
+              <Link to={`/chats/${chat.id}`}>
+                <div className='chatNameAndDel'>
+                  <b style={{ color: chat.id === chatId ? '#ccc' : 'grey' }}>
+                    {chat.name}
+                  </b>
+                  <button onClick={() => removeChat(index)}><Delete /></button>
+                </div>
+
+              </Link>
+            </ListItem>
+          )) : <div>Чатов нет</div>}
+        </List>
+        <Button variant='outlined' onClick={handleOpen} size='large'>Добавить чат</Button>
+      </div>
+
       <Dialog open={visible} onClose={() => setVisible(false)}>
         <TextField value={chatName} onChange={handleChange} />
         <Button onClick={onAddChat}>Submit</Button>
       </Dialog>
-    </>
+    </div>
   );
 };
 
-export default ChatList
+export default ChatList;
 
 

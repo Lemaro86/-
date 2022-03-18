@@ -21,22 +21,22 @@ function App() {
           <header className='App-header'>
             <List sx={{
               width: '100%',
-              maxWidth: 400,
+              maxWidth: 600,
               bgcolor: 'background.paper',
               display: 'flex',
               justifyContent: 'space-between'
             }}>
               <ListItem>
-                <Link to='/' className='link'>Home</Link>
+                <Link to='/' className='link'>Главная</Link>
               </ListItem>
               <ListItem>
-                <Link to='/profile' className='link'>Profile</Link>
+                <Link to='/profile' className='link'>Профиль</Link>
               </ListItem>
               <ListItem>
-                <Link to='/chats' className='link'>Chats</Link>
+                <Link to='/chats' className='link'>Чаты</Link>
               </ListItem>
               <ListItem>
-                <Link to='/gists' className='link'>Gists</Link>
+                <Link to='/gists' className='link'>Репы</Link>
               </ListItem>
             </List>
             <br />
@@ -46,9 +46,7 @@ function App() {
               <Route path='/' exact element={<Home />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/gists' element={<Gists />} />
-              <Route path='/chats/:chatId' element={
-                <Chats />}
-              />
+              <Route path='/chats/:chatId' element={<Chats />} />
               <Route path='*' element={<NotFound />} />
             </Routes>
 

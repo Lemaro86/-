@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { CircularProgress } from '@mui/material';
 import { getAllGists } from '../store/gists/action';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,8 +12,8 @@ const Gists = () => {
   };
 
   useEffect(() => {
-    requestGists();
-  }, []);
+    dispatch(getAllGists());
+  }, [dispatch]);
 
   const renderGist = useCallback(
     (gist) => <li key={gist.id}>{gist.description || 'No description'}</li>,

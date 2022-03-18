@@ -1,7 +1,8 @@
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div style={{ width: '800px' }}>
+      <h1>Главная страница</h1>
+      <span>Добро пожаловать в наш мессенджер!</span>
     </div>
   );
 };

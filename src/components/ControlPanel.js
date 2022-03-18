@@ -41,6 +41,7 @@ const ControlPanel = () => {
         label='Введите сообщение'
         variant='outlined'
         type='text'
+        fullWidth
         value={value}
         autoFocus
         onChange={handleInput}
@@ -50,6 +51,8 @@ const ControlPanel = () => {
         onClick={handleButton}
         onKeyDown={handleKeyDown}
         style={{
+          width: '56px',
+          flexShrink: 0,
           borderColor: theme.palette.secondary
         }}
       >
