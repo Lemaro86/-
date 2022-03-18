@@ -2,13 +2,20 @@ import PropTypes from 'prop-types';
 import { AccountCircle, Android } from '@mui/icons-material';
 import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import { AUTHORS } from '../constants/common';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getMessagesByChatIdWithFB } from '../store/middleware';
 
 const MessageList = () => {
   const allMessages = useSelector(state => state.messages.messageList);
   const { chatId } = useParams();
   const messages = allMessages[chatId];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMessagesByChatIdWithFB(chatId));
+  }, [chatId]);
 
   return (
     <div className='messenger'>

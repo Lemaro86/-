@@ -3,7 +3,7 @@ import { Send } from '@mui/icons-material';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMessage } from '../store/messages/actions';
+import { addMessageWithFB } from '../store/middleware';
 
 const ControlPanel = () => {
   const [value, setValue] = useState('');
@@ -22,7 +22,7 @@ const ControlPanel = () => {
         text: value,
         author: name
       }
-      dispatch(addMessage(chatId, message))
+      dispatch(addMessageWithFB(chatId, message))
       setValue('');
     }
   };

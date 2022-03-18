@@ -28,6 +28,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 
+  > ul {
+    max-width: 640px;
+  }
+
   > ul a {
     text-decoration: none;
 
